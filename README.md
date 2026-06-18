@@ -46,6 +46,27 @@ CONTACT_EMAIL=your-email@example.com
 
 ## 設定
 
+要調整搜尋的會議，請修改 `.env` 內以逗號分隔的 `PAPERBOT_VENUES`：
+
+```dotenv
+# 預設：搜尋四個電腦架構頂會
+PAPERBOT_VENUES=ISCA,MICRO,HPCA,ASPLOS
+```
+
+例如只搜尋 ISCA 與 MICRO：
+
+```dotenv
+PAPERBOT_VENUES=ISCA,MICRO
+```
+
+也可以加入其他會議縮寫：
+
+```dotenv
+PAPERBOT_VENUES=ISCA,MICRO,HPCA,ASPLOS,SC
+```
+
+會議名稱不分大小寫，項目前後空白會自動移除。程式會用每個項目查詢 DBLP、Crossref 與選填的 IEEE Xplore，並以該縮寫比對來源資料；ISCA、MICRO、HPCA、ASPLOS 另有內建完整會議名稱對照。新增其他會議時，來源 metadata 必須包含相同縮寫才會被辨識。修改 `.env` 後，下次執行 `paperbot run`、`dry-run` 或 systemd 排程時就會套用，不需要重新安裝套件。
+
 論文偏好關鍵字預設為 GPU 與 GPGPU：
 
 ```dotenv
