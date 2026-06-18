@@ -1,0 +1,15 @@
+[Unit]
+Description=Daily architecture paper summary bot
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+WorkingDirectory=/home/yuga/Desktop/PaperBot
+EnvironmentFile=/home/yuga/Desktop/PaperBot/.env
+ExecStart=/home/yuga/Desktop/PaperBot/.venv/bin/python -m paperbot run
+TimeoutStartSec=30min
+
+[Install]
+WantedBy=default.target
+

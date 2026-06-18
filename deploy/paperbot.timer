@@ -1,0 +1,12 @@
+[Unit]
+Description=Run daily architecture paper bot at 09:00 Asia/Taipei
+
+[Timer]
+OnCalendar=*-*-* 09:00:00 Asia/Taipei
+Persistent=true
+RandomizedDelaySec=60
+Unit=paperbot.service
+
+[Install]
+WantedBy=timers.target
+
